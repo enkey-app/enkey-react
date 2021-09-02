@@ -1,0 +1,10 @@
+{
+  "name": "enkey-react",
+  "version": "0.0.0",
+  "description": "React implementation for enkey copy manager ",
+  "main": "index.js",
+  "repository": "https://github.com/enkey-app/enkey-react",
+  "author": "Casey Collins",
+  "license": "MIT",
+  "private": false
+}
