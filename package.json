@@ -1,10 +1,49 @@
 {
-  "name": "enkey-react",
-  "version": "0.0.0",
-  "description": "React implementation for enkey copy manager ",
-  "main": "index.js",
-  "repository": "https://github.com/enkey-app/enkey-react",
-  "author": "Casey Collins",
-  "license": "MIT",
-  "private": false
+    "name": "enkey-react",
+    "version": "0.0.0",
+    "description": "React implementation for enkey copy manager ",
+    "main": "./lib/cjs/index.js",
+    "module": "./lib/esm/index.js",
+    "types": "./lib/esm/index.d.ts",
+    "repository": "https://github.com/enkey-app/enkey-react",
+    "author": "Casey Collins",
+    "license": "MIT",
+    "private": false,
+    "devDependencies": {
+        "@types/react": "^17.0.19",
+        "@types/react-dom": "^17.0.9",
+        "@typescript-eslint/eslint-plugin": "^4.30.0",
+        "@typescript-eslint/parser": "^4.30.0",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.25.1",
+        "prettier": "^2.3.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "typescript": "^4.4.2"
+    },
+    "peerDependencies": {
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "scripts": {
+        "build": "yarn build:esm && yarn build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix"
+    },
+    "files": [
+        "/lib"
+    ]
 }

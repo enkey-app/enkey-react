@@ -1,0 +1,22 @@
+.DS_STORE
+
+/dist/
+node_modules
+.rpt2_cache
+.cache
+.env*
+/lib
+
+/coverage
+
+# Ignore npm/yarn debug log
+npm-debug.log
+yarn-error.log
+
+# storybook
+.out
+
+/coverage
+
+/enkey-react-example/node_modules
+/enkey-react-example/build
