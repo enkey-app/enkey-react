@@ -10,6 +10,9 @@
     "license": "MIT",
     "private": false,
     "devDependencies": {
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.0.0",
+        "@types/jest": "^27.0.1",
         "@types/react": "^17.0.19",
         "@types/react-dom": "^17.0.9",
         "@typescript-eslint/eslint-plugin": "^4.30.0",
@@ -19,33 +22,50 @@
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.25.1",
         "husky": "^7.0.2",
+        "i18next": "^20.6.0",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^27.1.0",
         "lint-staged": "^11.1.2",
         "prettier": "^2.3.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "ts-jest": "^27.0.5",
         "typescript": "^4.4.2"
     },
     "peerDependencies": {
+        "i18next": "^20.6.0",
         "react": "^16.8.0",
         "react-dom": "^16.8.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
     },
     "lint-staged": {
         "*.{js,ts,tsx}": [
             "eslint --fix"
-        ]
+        ],
+        "*.js": "eslint --cache --fix"
     },
     "scripts": {
         "build": "yarn build:esm && yarn build:cjs",
         "build:esm": "tsc",
         "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix"
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix",
+        "prepare": "husky install",
+        "test": "jest"
     },
     "files": [
         "/lib"
-    ]
+    ],
+    "jest": {
+        "preset": "ts-jest",
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
+        "setupFilesAfterEnv": [
+            "<rootDir>/jest-setup.ts"
+        ],
+        "modulePathIgnorePatterns": [
+            "enkey-react-example/*"
+        ],
+        "moduleNameMapper": {
+            "\\.(css|less)$": "identity-obj-proxy",
+            "\\.(jpg|jpeg|png|gif)$": "<rootDir>/src/__mocks__/fileMock.ts"
+        }
+    }
 }
